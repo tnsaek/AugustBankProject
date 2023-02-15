@@ -5,9 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 
-//import org.springframework.data.mongodb.core.mapping.Document;
 
-//@Document(collection = "Customer")
 @Data
 public class Customer {
 
