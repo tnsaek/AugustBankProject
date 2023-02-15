@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.Entity;
+package august.bank.app.bankproject.entity;
 
 
 import lombok.Data;
@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 @Data
-@Document(collection = "Transaction")
+@Document(collection = "transactions")
 public class Transaction {
 
     @Id

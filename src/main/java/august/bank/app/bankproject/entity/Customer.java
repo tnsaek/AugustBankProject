@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.Entity;
+package august.bank.app.bankproject.entity;
 
 
 import lombok.Data;
@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Customer")
+@Document(collection = "customers")
 @Data
 public class Customer {
 
