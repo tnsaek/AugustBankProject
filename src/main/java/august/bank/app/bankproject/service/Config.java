@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.Services;
+package august.bank.app.bankproject.service;
 
 
 import org.modelmapper.ModelMapper;

@@ -1,9 +1,7 @@
-package august.bank.app.bankproject.dtos;
+package august.bank.app.bankproject.dto;
 
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
-import august.bank.app.bankproject.entitys.Role;
+import august.bank.app.bankproject.entity.Role;
 
 import java.util.List;
 

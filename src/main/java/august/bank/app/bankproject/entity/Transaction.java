@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.entitys;
+package august.bank.app.bankproject.entity;
 
 
 import lombok.Data;

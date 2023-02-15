@@ -1,10 +1,13 @@
-package august.bank.app.bankproject.Services.Impl;
+package august.bank.app.bankproject.service.Impl;
 
-import august.bank.app.bankproject.Domains.Customer;
-import august.bank.app.bankproject.Services.CustomerService;
+import august.bank.app.bankproject.entity.Customer;
+import august.bank.app.bankproject.service.CustomerService;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -12,6 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Iterable<Customer> getAllCustomers() {
+
         return customerService.getAllCustomers();
     }
 

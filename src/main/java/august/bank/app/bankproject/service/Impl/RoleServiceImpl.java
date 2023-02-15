@@ -1,7 +1,7 @@
-package august.bank.app.bankproject.Services.Impl;
+package august.bank.app.bankproject.service.Impl;
 
-import august.bank.app.bankproject.dtos.RoleDto;
-import august.bank.app.bankproject.entitys.Role;
+import august.bank.app.bankproject.dto.RoleDto;
+import august.bank.app.bankproject.entity.Role;
 import august.bank.app.bankproject.repository.RoleRepository;
 import august.bank.app.bankproject.service.RoleService;
 import lombok.AllArgsConstructor;

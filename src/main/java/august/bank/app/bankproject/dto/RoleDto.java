@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.dtos;
+package august.bank.app.bankproject.dto;
 
 
 import lombok.Data;

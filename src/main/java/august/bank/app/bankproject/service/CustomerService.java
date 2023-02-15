@@ -1,6 +1,6 @@
-package august.bank.app.bankproject.Services;
+package august.bank.app.bankproject.service;
 
-import august.bank.app.bankproject.Domains.Customer;
+import august.bank.app.bankproject.entity.Customer;
 
 public interface CustomerService {
 

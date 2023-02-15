@@ -1,5 +1,4 @@
-package august.bank.app.bankproject.entitys;
-
+package august.bank.app.bankproject.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,12 +6,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
-@Document(collection = "roles")
+@Document(collection = "accounts")
 @Data
-public class Role {
+public class Account {
 
     @Id
     private Long id;
 
-    private String name;
+    private String type;
+
+    private Double balance;
+
 }

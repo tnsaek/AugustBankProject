@@ -1,15 +1,12 @@
-package august.bank.app.bankproject.entitys;
-
-
-import lombok.Data;
+package august.bank.app.bankproject.dto;
 
 import java.util.List;
 
+import august.bank.app.bankproject.entity.Account;
+import august.bank.app.bankproject.entity.Transaction;
 
-@Data
-public class Customer {
+public class CustomerDto {
 
-    
     private Long id;
 
     private String firstName;
@@ -17,12 +14,9 @@ public class Customer {
     private String lastName;
 
 
-    
     private List<Account>  accounts;
 
 
-    
     private List<Transaction> transactions;
-
-
+    
 }

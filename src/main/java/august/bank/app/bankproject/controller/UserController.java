@@ -1,7 +1,6 @@
-package august.bank.app.bankproject.controllers;
+package august.bank.app.bankproject.controller;
 
-import august.bank.app.bankproject.Entity.User;
-import august.bank.app.bankproject.dtos.UserDto;
+import august.bank.app.bankproject.dto.UserDto;
 import august.bank.app.bankproject.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

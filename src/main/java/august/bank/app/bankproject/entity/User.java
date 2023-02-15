@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.entitys;
+package august.bank.app.bankproject.entity;
 
 import org.springframework.data.annotation.Id;
 import lombok.Data;
@@ -20,6 +20,7 @@ public class User {
     private String email;
 
     private String password;
+    
     @DocumentReference(lookup = "Role")
     private List<Role> roles;
 }

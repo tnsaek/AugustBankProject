@@ -1,7 +1,7 @@
-package august.bank.app.bankproject.Services.Impl;
+package august.bank.app.bankproject.service.Impl;
 
-import august.bank.app.bankproject.dtos.UserDto;
-import august.bank.app.bankproject.entitys.User;
+import august.bank.app.bankproject.dto.UserDto;
+import august.bank.app.bankproject.entity.User;
 import august.bank.app.bankproject.repository.UserRepository;
 import august.bank.app.bankproject.service.UserService;
 import org.modelmapper.ModelMapper;
