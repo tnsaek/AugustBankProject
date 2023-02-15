@@ -1,16 +1,17 @@
 package august.bank.app.bankproject.service;
 
-import august.bank.app.bankproject.Entity.User;
+import august.bank.app.bankproject.dto.UserDto;
+import august.bank.app.bankproject.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface UserService {
-    public void create(User user);
-    public List<User> readAll();
-    public User readById(long id);
-    public void update(long id, User user);
+    public UserDto create(UserDto user);
+    public List<UserDto> readAll();
+    public UserDto readById(long id);
+    public UserDto update(long id, UserDto userDto);
     public void deleteById(long id);
 
 }
