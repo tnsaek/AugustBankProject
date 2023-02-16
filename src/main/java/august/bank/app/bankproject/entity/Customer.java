@@ -1,6 +1,7 @@
 package august.bank.app.bankproject.entity;
 
 
+import august.bank.app.bankproject.dto.AccountDto;
 import lombok.Data;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class Customer {
 
 
     
-    private List<Account>  accounts;
+    private List<AccountDto>  accounts;
 
 
     

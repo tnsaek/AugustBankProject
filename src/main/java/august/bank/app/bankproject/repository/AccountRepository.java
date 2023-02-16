@@ -1,9 +1,10 @@
 package august.bank.app.bankproject.repository;
 
-import august.bank.app.bankproject.entity.User;
+import august.bank.app.bankproject.Entity.Account;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, Long> {
+public interface AccountRepository extends MongoRepository<Account, Long> {
 }

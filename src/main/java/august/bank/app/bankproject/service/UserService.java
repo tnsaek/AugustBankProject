@@ -1,6 +1,6 @@
 package august.bank.app.bankproject.service;
 
-import august.bank.app.bankproject.Entity.User;
+import august.bank.app.bankproject.entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

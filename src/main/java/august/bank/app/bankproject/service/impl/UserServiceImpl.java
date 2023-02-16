@@ -1,6 +1,7 @@
 package august.bank.app.bankproject.service.impl;
 
-import august.bank.app.bankproject.Entity.User;
+
+import august.bank.app.bankproject.entity.User;
 import august.bank.app.bankproject.repository.UserRepository;
 import august.bank.app.bankproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void create(User user) {
-        userRepository.insert(user);
+        userRepository.save(user);
 
     }
 

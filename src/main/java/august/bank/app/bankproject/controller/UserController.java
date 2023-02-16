@@ -1,6 +1,6 @@
 package august.bank.app.bankproject.controller;
 
-import august.bank.app.bankproject.Entity.User;
+import august.bank.app.bankproject.entity.User;
 import august.bank.app.bankproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
