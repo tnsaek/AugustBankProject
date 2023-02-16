@@ -28,10 +28,10 @@ public class Transaction {
 
 
     @DocumentReference(lazy = true)
-    private User from;
+    private Customer from;
 
     @DocumentReference(lazy = true)
-    private User to;
+    private Customer to;
 
     private Double balance;
 
