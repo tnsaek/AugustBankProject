@@ -21,7 +21,7 @@ public class RoleController {
     private RoleService roleService;
 
 
-    @GetMapping("/")
+    @GetMapping
     public List<RoleDto> getRole() {
         return roleService.getRoles();
     }
@@ -31,7 +31,7 @@ public class RoleController {
         return roleService.getRoleById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public RoleDto createRole(@RequestBody RoleDto roleDto) {
         return roleService.addRole(roleDto);
     }

@@ -1,14 +1,16 @@
 package august.bank.app.bankproject.service;
 
-import august.bank.app.bankproject.entity.Customer;
+import august.bank.app.bankproject.dto.CustomerDto;
+
+import java.util.List;
 
 public interface CustomerService {
 
-    Iterable<Customer> getAllCustomers();
-    Customer getCustomer();
-    Customer saveCustomer(Customer customer);
-    Customer updateCustomer(Customer customer);
-    void deleteCustomer();
+    List<CustomerDto> getAllCustomers();
+    CustomerDto getCustomerById(Long id);
+    CustomerDto saveCustomer(CustomerDto customer);
+    CustomerDto updateCustomer(Long id, CustomerDto customer);
+    void deleteCustomer(Long id);
 
 
 

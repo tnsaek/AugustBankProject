@@ -45,7 +45,6 @@ public class RoleServiceImpl implements RoleService {
     //    add Role
     public RoleDto addRole(RoleDto roleDto) {
         Role role = modelMapper.map(roleDto, Role.class);
-
         try {
             Role savedRole = roleRepository.save(role);
             return modelMapper.map(savedRole, RoleDto.class);
