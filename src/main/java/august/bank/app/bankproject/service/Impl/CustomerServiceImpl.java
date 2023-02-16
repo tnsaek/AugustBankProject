@@ -43,8 +43,11 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDto saveCustomer(CustomerDto customer) {
         try {
             Customer customerEntity = modelMapper.map(customer, Customer.class);
-            return modelMapper.map(customerRepository.save(customerEntity), CustomerDto.class);
+            Customer savedCustomer = customerRepository.save(customerEntity);
+            return modelMapper.map(savedCustomer, CustomerDto.class);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ;
             throw new RuntimeException("Customer not saved");
         }
     }

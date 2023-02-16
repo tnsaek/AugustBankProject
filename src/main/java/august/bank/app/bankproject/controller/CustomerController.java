@@ -3,6 +3,8 @@ package august.bank.app.bankproject.controller;
 
 import august.bank.app.bankproject.dto.CustomerDto;
 import august.bank.app.bankproject.service.CustomerService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@NoArgsConstructor
+@AllArgsConstructor
 @CrossOrigin
 @RequestMapping("/customers")
 public class CustomerController {
@@ -22,7 +26,6 @@ public class CustomerController {
     public List<CustomerDto> getAllCustomers() {
 
         return customerService.getAllCustomers();
-
 
     }
 

@@ -4,7 +4,10 @@ import java.util.List;
 
 import august.bank.app.bankproject.entity.Account;
 import august.bank.app.bankproject.entity.Transaction;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 public class CustomerDto {
 
     private Long id;
