@@ -1,6 +1,5 @@
 package august.bank.app.bankproject.controller;
 
-import august.bank.app.bankproject.Entity.Account;
 import august.bank.app.bankproject.dto.AccountDto;
 import august.bank.app.bankproject.service.AccountService;
 import org.bson.types.ObjectId;
