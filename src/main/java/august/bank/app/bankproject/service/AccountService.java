@@ -1,8 +1,6 @@
 package august.bank.app.bankproject.service;
 
-import august.bank.app.bankproject.entity.Account;
 import august.bank.app.bankproject.dto.AccountDto;
-import org.bson.types.ObjectId;
 
 import java.util.List;
 

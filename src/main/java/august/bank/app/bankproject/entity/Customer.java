@@ -26,7 +26,7 @@ public class Customer {
     private String lastName;
 
 
-    @DocumentReference(lazy = true)
+    @DocumentReference
     private List<Account>  accounts;
 
 

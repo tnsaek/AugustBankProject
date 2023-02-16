@@ -1,7 +1,6 @@
 package august.bank.app.bankproject.service;
 
 import august.bank.app.bankproject.dto.TransactionDto;
-import august.bank.app.bankproject.entity.Transaction;
 
 import java.util.List;
 

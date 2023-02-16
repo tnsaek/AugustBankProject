@@ -5,23 +5,19 @@ import august.bank.app.bankproject.entity.Account;
 import august.bank.app.bankproject.dto.AccountDto;
 import august.bank.app.bankproject.repository.AccountRepository;
 import august.bank.app.bankproject.service.AccountService;
-// import io.micrometer.core.instrument.Meter;
-import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-//@Import({ MongoAutoConfiguration.class })
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private  ModelMapper modelMapper;
+    private ModelMapper modelMapper;
+
     @Override
     public AccountDto addAccount(AccountDto accountDto) {
         Account account = modelMapper.map(accountDto, Account.class);
@@ -31,11 +27,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccountById(String idAccount) {
-        try{
+        try {
             Account account = accountRepository.findById(idAccount).get();
-            AccountDto accountDto = modelMapper.map(account, AccountDto.class);
-            return accountDto;
-        } catch (RuntimeException e){
+            return modelMapper.map(account, AccountDto.class);
+        } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
 
@@ -43,11 +38,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<AccountDto> getAllAccounts() {
-        try{
+        try {
             List<Account> accounts = accountRepository.findAll();
-            List<AccountDto> accountDtos= accounts.stream().map(acc ->(modelMapper.map(acc, AccountDto.class))).toList();
-            return accountDtos;
-        } catch (RuntimeException e){
+            return accounts.stream().map(acc -> (modelMapper.map(acc, AccountDto.class))).toList();
+        } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
 
@@ -60,19 +54,17 @@ public class AccountServiceImpl implements AccountService {
             account.setId(accountId);
             Account account1 = accountRepository.save(account);
             return modelMapper.map(account1, AccountDto.class);
-        } catch (Exception e){
-
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
-        System.out.println("Object not found");
-        throw new RuntimeException();
     }
 
 
     @Override
     public void deleteAccount(String id) {
-        try{
+        try {
             accountRepository.deleteById(id);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
 

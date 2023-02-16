@@ -6,7 +6,6 @@ import august.bank.app.bankproject.entity.Account;
 import august.bank.app.bankproject.entity.Customer;
 import august.bank.app.bankproject.repository.AccountRepository;
 import august.bank.app.bankproject.repository.CustomerRepository;
-import august.bank.app.bankproject.service.AccountService;
 import august.bank.app.bankproject.service.CustomerService;
 
 
@@ -100,9 +99,9 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             Customer customer = customerRepository.findById(customerId).get();
             Account account = modelMapper.map(accountDto, Account.class);
+            account = accountRepository.save(account);
             customer.getAccounts().add(account);
             customerRepository.save(customer);
-            accountRepository.save(account);
         } catch (Exception e) {
             throw new RuntimeException("Customer not found");
         }
@@ -123,8 +122,6 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
     }
-
-
 
 
 }
