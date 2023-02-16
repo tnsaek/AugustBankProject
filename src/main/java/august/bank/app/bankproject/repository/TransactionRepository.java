@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TransactionRepository extends MongoRepository<Transaction, Long> {
+public interface TransactionRepository extends MongoRepository<Transaction, String> {
     Optional<List<Transaction>> findByDateTime(LocalDateTime dateTime);
 
-    Optional<List<Transaction>> findByNumber(Long number);
+    Optional<List<Transaction>> findByNumber(String number);
 
-    Optional<List<Transaction>> findByFromId(Long id);
+    Optional<List<Transaction>> findByFromId(String id);
 
-    Optional<List<Transaction>> findByToId(Long id);
+    Optional<List<Transaction>> findByToId(String id);
 
     Optional<List<Transaction>> findByType(String type);
 

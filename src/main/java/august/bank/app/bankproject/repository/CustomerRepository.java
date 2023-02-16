@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Repository
-public interface CustomerRepository extends MongoRepository<Customer, Long> {
+public interface CustomerRepository extends MongoRepository<Customer, String> {
 
     List<Customer> findAll();
 

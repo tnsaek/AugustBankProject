@@ -30,7 +30,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDto getAccountById(Long idAccount) {
+    public AccountDto getAccountById(String idAccount) {
         try{
             Account account = accountRepository.findById(idAccount).get();
             AccountDto accountDto = modelMapper.map(account, AccountDto.class);
@@ -54,7 +54,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDto updateAccount(Long accountId, AccountDto accountDto) {
+    public AccountDto updateAccount(String accountId, AccountDto accountDto) {
         try {
             Account account = modelMapper.map(accountDto, Account.class);
             account.setId(accountId);
@@ -69,7 +69,7 @@ public class AccountServiceImpl implements AccountService {
 
 
     @Override
-    public void deleteAccount(Long id) {
+    public void deleteAccount(String id) {
         try{
             accountRepository.deleteById(id);
         } catch (RuntimeException e){
@@ -81,17 +81,17 @@ public class AccountServiceImpl implements AccountService {
 //    TODO: Implement the following methods
 
     @Override
-    public void deposit(Long accountId, Double amount) {
+    public void deposit(String accountId, Double amount) {
 
     }
 
     @Override
-    public void withdraw(Long accountId, Double amount) {
+    public void withdraw(String accountId, Double amount) {
 
     }
 
     @Override
-    public void transfer(Long fromAccountId, Long toAccountId, Double amount) {
+    public void transfer(String fromAccountId, String toAccountId, Double amount) {
 
     }
 }

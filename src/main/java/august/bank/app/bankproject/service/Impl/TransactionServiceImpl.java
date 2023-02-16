@@ -26,7 +26,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionDto getTransactionById(Long transactionId) {
+    public TransactionDto getTransactionById(String transactionId) {
         try{
             Transaction transaction = transactionRepository.findById(transactionId).orElse(null);
             return modelMapper.map(transaction, TransactionDto.class);
@@ -46,7 +46,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionDto updateTransaction(Long transactionId, TransactionDto transactionDto) {
+    public TransactionDto updateTransaction(String transactionId, TransactionDto transactionDto) {
         try{
             Transaction transaction = modelMapper.map(transactionDto, Transaction.class);
             transaction.setId(transactionId);
@@ -57,7 +57,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public void deleteTransactionById(Long transactionId) {
+    public void deleteTransactionById(String transactionId) {
         try{
             transactionRepository.deleteById(transactionId);
         } catch (RuntimeException e){
@@ -78,7 +78,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<TransactionDto> getTransactionByNumber(Long number) {
+    public List<TransactionDto> getTransactionByNumber(String number) {
 
         try {
             List<Transaction> transactions = transactionRepository.findByNumber(number).orElse(null);
@@ -90,7 +90,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<TransactionDto> getTransactionByFromId(Long id) {
+    public List<TransactionDto> getTransactionByFromId(String id) {
        try {
             List<Transaction> transactions = transactionRepository.findByFromId(id).orElse(null);
             return transactions.stream().map(transaction -> modelMapper.map(transaction, TransactionDto.class)).toList();
@@ -100,7 +100,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<TransactionDto> getTransactionByToId(Long id) {
+    public List<TransactionDto> getTransactionByToId(String id) {
         try {
             List<Transaction> transactions = transactionRepository.findByToId(id).orElse(null);
             return transactions.stream().map(transaction -> modelMapper.map(transaction, TransactionDto.class)).toList();

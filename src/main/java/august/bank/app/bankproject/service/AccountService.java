@@ -9,14 +9,14 @@ import java.util.List;
 public interface AccountService {
 
     public AccountDto addAccount(AccountDto accountDto);
-    public AccountDto getAccountById (Long id);
+    public AccountDto getAccountById (String id);
     public List<AccountDto> getAllAccounts();
-    public AccountDto updateAccount(Long accountId,AccountDto accountDto);
-    public void deleteAccount(Long id);
+    public AccountDto updateAccount(String accountId,AccountDto accountDto);
+    public void deleteAccount(String id);
 //    TODO: implement these methods
-    public void deposit(Long accountId, Double amount);
-    public void withdraw(Long accountId, Double amount);
-    public void transfer(Long fromAccountId, Long toAccountId, Double amount);
+    public void deposit(String accountId, Double amount);
+    public void withdraw(String accountId, Double amount);
+    public void transfer(String fromAccountId, String toAccountId, Double amount);
 
 }
 

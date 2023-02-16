@@ -11,6 +11,6 @@ import org.bson.types.ObjectId;
 @AllArgsConstructor
 public class RoleDto {
 
-    private Long id;
+    private String id;
     private String name;
 }

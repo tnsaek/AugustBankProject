@@ -8,17 +8,17 @@ import java.util.List;
 public interface CustomerService {
 
     List<CustomerDto> getAllCustomers();
-    CustomerDto getCustomerById(Long id);
+    CustomerDto getCustomerById(String id);
     CustomerDto saveCustomer(CustomerDto customer);
-    CustomerDto updateCustomer(Long id, CustomerDto customer);
-    void deleteCustomer(Long id);
+    CustomerDto updateCustomer(String id, CustomerDto customer);
+    void deleteCustomer(String id);
 
 
-    List<AccountDto> getAllAccounts(Long id);
+    List<AccountDto> getAllAccounts(String id);
 
-    void addAccountToCustomer(Long customerId, AccountDto accountDto);
+    void addAccountToCustomer(String customerId, AccountDto accountDto);
 
-    void deleteAccountFromCustomer(Long customerId, Long accountId);
+    void deleteAccountFromCustomer(String customerId, String accountId);
 
 
 

@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto getCustomerById(Long id) {
+    public CustomerDto getCustomerById(String id) {
         try {
             Customer customer = customerRepository.findById(id).get();
             return modelMapper.map(customer, CustomerDto.class);
@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public CustomerDto updateCustomer(Long id, CustomerDto customer) {
+    public CustomerDto updateCustomer(String id, CustomerDto customer) {
         try {
             Customer customerEntity = modelMapper.map(customer, Customer.class);
             customerEntity.setId(id);
@@ -75,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomer(Long id) {
+    public void deleteCustomer(String id) {
         try {
             customerRepository.deleteById(id);
         } catch (Exception e) {
@@ -84,7 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<AccountDto> getAllAccounts(Long id) {
+    public List<AccountDto> getAllAccounts(String id) {
         try {
             Customer customer = customerRepository.findById(id).get();
             return customer.getAccounts().stream()
@@ -96,7 +96,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addAccountToCustomer(Long customerId, AccountDto accountDto) {
+    public void addAccountToCustomer(String customerId, AccountDto accountDto) {
         try {
             Customer customer = customerRepository.findById(customerId).get();
             Account account = modelMapper.map(accountDto, Account.class);
@@ -110,7 +110,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteAccountFromCustomer(Long customerId, Long accountId) {
+    public void deleteAccountFromCustomer(String customerId, String accountId) {
 
         try {
             Customer customer = customerRepository.findById(customerId).get();

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import august.bank.app.bankproject.entity.User;
 
 @Repository
-public interface UserRepository extends MongoRepository<User, Long> {
+public interface UserRepository extends MongoRepository<User, String> {
 }

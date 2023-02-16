@@ -9,21 +9,21 @@ public interface TransactionService {
 
     public TransactionDto addTransaction(TransactionDto transactionDto);
 
-    public TransactionDto getTransactionById(Long transactionId);
+    public TransactionDto getTransactionById(String transactionId);
 
     public List<TransactionDto> getAllTransaction();
 
-    public TransactionDto updateTransaction(Long transactionId, TransactionDto transaction);
+    public TransactionDto updateTransaction(String transactionId, TransactionDto transaction);
 
-    public void deleteTransactionById(Long transactionId);
+    public void deleteTransactionById(String transactionId);
 
     public List<TransactionDto> getTransactionByDateTime(String dateTime);
 
-    public List<TransactionDto> getTransactionByNumber(Long number);
+    public List<TransactionDto> getTransactionByNumber(String number);
 
-    public List<TransactionDto> getTransactionByFromId(Long id);
+    public List<TransactionDto> getTransactionByFromId(String id);
 
-    public List<TransactionDto> getTransactionByToId(Long id);
+    public List<TransactionDto> getTransactionByToId(String id);
 
     public List<TransactionDto> getTransactionByType(String type);
 

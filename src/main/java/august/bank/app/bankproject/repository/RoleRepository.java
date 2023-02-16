@@ -8,7 +8,7 @@ import august.bank.app.bankproject.entity.Role;
 
 
 @Repository
-public interface RoleRepository extends MongoRepository<Role, Long> {
+public interface RoleRepository extends MongoRepository<Role, String> {
 
 
 

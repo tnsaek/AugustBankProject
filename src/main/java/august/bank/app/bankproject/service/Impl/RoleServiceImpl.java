@@ -32,7 +32,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     //    get Role By Id
-    public RoleDto getRoleById(Long id) {
+    public RoleDto getRoleById(String id) {
         try {
             Role role = roleRepository.findById(id).get();
             return modelMapper.map(role, RoleDto.class);
@@ -54,7 +54,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     //    delete Role
-    public void deleteRole(Long id) {
+    public void deleteRole(String id) {
         try {
             roleRepository.deleteById(id);
         } catch (RuntimeException e) {
@@ -63,7 +63,7 @@ public class RoleServiceImpl implements RoleService {
     }
 //    update Role
 
-    public RoleDto updateRole(Long id, RoleDto roleDto) {
+    public RoleDto updateRole(String id, RoleDto roleDto) {
         try {
             Role role = modelMapper.map(roleDto, Role.class);
             role.setId(id);

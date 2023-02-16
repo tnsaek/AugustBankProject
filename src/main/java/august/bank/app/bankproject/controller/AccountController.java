@@ -2,7 +2,6 @@ package august.bank.app.bankproject.controller;
 
 import august.bank.app.bankproject.dto.AccountDto;
 import august.bank.app.bankproject.service.AccountService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ public class AccountController {
         return accountService.addAccount(accountDto);
     }
     @GetMapping(value = "/{accountId}")
-    public AccountDto getAccountById(@PathVariable Long accountId){
+    public AccountDto getAccountById(@PathVariable String accountId){
         return accountService.getAccountById(accountId);
     }
     @GetMapping(value = "")
@@ -26,11 +25,11 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
     @PutMapping(value = "/{accountId}")
-    public AccountDto updateAccount(@PathVariable Long accountId, @RequestBody AccountDto accountDto){
+    public AccountDto updateAccount(@PathVariable String accountId, @RequestBody AccountDto accountDto){
         return accountService.updateAccount(accountId, accountDto);
     }
     @DeleteMapping(value = "/{accountId}")
-    public void deleteAccount(@PathVariable Long accountId){
+    public void deleteAccount(@PathVariable String accountId){
         accountService.deleteAccount(accountId);
     }
 //    TODO: implement these methods

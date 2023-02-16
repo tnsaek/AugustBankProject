@@ -19,7 +19,7 @@ public class TransactionController {
     }
 
     @GetMapping(value = "/get/transaction/{transactionId}")
-    public TransactionDto getTransactionById(@PathVariable Long transactionId) {
+    public TransactionDto getTransactionById(@PathVariable String transactionId) {
         return transactionService.getTransactionById(transactionId);
     }
 
@@ -29,12 +29,12 @@ public class TransactionController {
     }
 
     @PutMapping(value = "/update/transaction/{transactionId}")
-    public TransactionDto updateTransaction(@PathVariable Long transactionId, @RequestBody TransactionDto transactionDto) {
+    public TransactionDto updateTransaction(@PathVariable String transactionId, @RequestBody TransactionDto transactionDto) {
         return transactionService.updateTransaction(transactionId, transactionDto);
     }
 
     @DeleteMapping(value = "delete/transaction/{transactionId}")
-    public void deleteTransaction(@PathVariable Long transactionId) {
+    public void deleteTransaction(@PathVariable String transactionId) {
         transactionService.deleteTransactionById(transactionId);
     }
 
@@ -44,17 +44,17 @@ public class TransactionController {
     }
 
     @GetMapping(value = "search/transactions/from/{accountId}")
-    public List<TransactionDto> getTransactionsByFromAccountId(@PathVariable Long accountId) {
+    public List<TransactionDto> getTransactionsByFromAccountId(@PathVariable String accountId) {
         return transactionService.getTransactionByFromId(accountId);
     }
 
     @GetMapping(value = "search/transactions/to/{accountId}")
-    public List<TransactionDto> getTransactionsByToAccountId(@PathVariable Long accountId) {
+    public List<TransactionDto> getTransactionsByToAccountId(@PathVariable String accountId) {
         return transactionService.getTransactionByToId(accountId);
     }
 
     @GetMapping(value = "search/transactions/number/{number}")
-    public List<TransactionDto> getTransactionsByNumber(@PathVariable Long number) {
+    public List<TransactionDto> getTransactionsByNumber(@PathVariable String number) {
         return transactionService.getTransactionByNumber(number);
     }
 

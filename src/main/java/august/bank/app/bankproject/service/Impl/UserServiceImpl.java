@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto readById(long id) {
+    public UserDto readById(String id) {
         try{
             User user= userRepository.findById(id).get();
             return modelMapper.map(user, UserDto.class);
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto update(long id, UserDto userDto) {
+    public UserDto update(String id, UserDto userDto) {
         try{
             User user= modelMapper.map(userDto, User.class);
             user.setId(id);
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(String id) {
       try{
           userRepository.deleteById(id);
       }catch (RuntimeException e){

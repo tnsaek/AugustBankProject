@@ -1,5 +1,7 @@
 package august.bank.app.bankproject.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import lombok.Data;
 
@@ -10,10 +12,12 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 @Document(collection = "users")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
-    private long id;
+    private String id;
 
     private String name;
 

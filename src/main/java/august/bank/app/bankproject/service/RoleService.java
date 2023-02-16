@@ -15,13 +15,13 @@ public interface RoleService {
 
     List<RoleDto> getRoles();
 
-    RoleDto getRoleById(Long id);
+    RoleDto getRoleById(String id);
 
     RoleDto addRole(RoleDto roleDto);
 
-    void deleteRole(Long id);
+    void deleteRole(String id);
 
-    RoleDto updateRole(Long id, RoleDto roleDto);
+    RoleDto updateRole(String id, RoleDto roleDto);
 
 
 

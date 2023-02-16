@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public CustomerDto getCustomerById(@PathVariable Long id) {
+    public CustomerDto getCustomerById(@PathVariable String id) {
         return customerService.getCustomerById(id);
     }
 
@@ -46,36 +46,36 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public CustomerDto updateCustomer(@PathVariable Long id, @RequestBody CustomerDto customer) {
+    public CustomerDto updateCustomer(@PathVariable String id, @RequestBody CustomerDto customer) {
         return customerService.updateCustomer(id, customer);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<?> deleteCustomer(@PathVariable String id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}/accounts")
-    public List<AccountDto> getCustomerAccounts(@PathVariable Long id) {
+    public List<AccountDto> getCustomerAccounts(@PathVariable String id) {
 
         return customerService.getAllAccounts(id);
 
     }
 
     @GetMapping("/{id}/accounts/{accountId}")
-    public AccountDto getCustomerAccountById(@PathVariable Long id, @PathVariable Long accountId) {
+    public AccountDto getCustomerAccountById(@PathVariable String id, @PathVariable String accountId) {
         return accountService.getAccountById(accountId);
     }
 
 
     @PostMapping("/{id}/accounts")
-    public void addAccountToCustomer(@PathVariable Long id, @RequestBody AccountDto accountDto) {
+    public void addAccountToCustomer(@PathVariable String id, @RequestBody AccountDto accountDto) {
         customerService.addAccountToCustomer(id, accountDto);
     }
 
     @DeleteMapping("/{id}/accounts/{accountId}")
-    public void deleteAccountFromCustomer(@PathVariable Long id, @PathVariable Long accountId) {
+    public void deleteAccountFromCustomer(@PathVariable String id, @PathVariable String accountId) {
         customerService.deleteAccountFromCustomer(id, accountId);
     }
 

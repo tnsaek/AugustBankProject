@@ -17,7 +17,7 @@ import lombok.Data;
 public class Role {
 
     @Id
-    private Long id;
+    private String id;
 
     private String name;
 }

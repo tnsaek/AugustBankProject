@@ -10,8 +10,8 @@ import java.util.List;
 public interface UserService {
     public UserDto create(UserDto user);
     public List<UserDto> readAll();
-    public UserDto readById(long id);
-    public UserDto update(long id, UserDto userDto);
-    public void deleteById(long id);
+    public UserDto readById(String id);
+    public UserDto update(String id, UserDto userDto);
+    public void deleteById(String id);
 
 }

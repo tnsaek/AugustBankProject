@@ -19,8 +19,7 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 public class Customer {
 
     @Id
-
-    private Long id;
+    private String id;
 
     private String firstName;
 
