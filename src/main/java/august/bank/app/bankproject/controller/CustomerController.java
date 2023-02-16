@@ -1,7 +1,9 @@
 package august.bank.app.bankproject.controller;
 
 
+import august.bank.app.bankproject.dto.AccountDto;
 import august.bank.app.bankproject.dto.CustomerDto;
+import august.bank.app.bankproject.service.AccountService;
 import august.bank.app.bankproject.service.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,10 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+
+    @Autowired
+    private AccountService accountService;
 
 
     @GetMapping
@@ -49,5 +55,29 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/{id}/accounts")
+    public List<AccountDto> getCustomerAccounts(@PathVariable Long id) {
+
+        return customerService.getAllAccounts(id);
+
+    }
+
+    @GetMapping("/{id}/accounts/{accountId}")
+    public AccountDto getCustomerAccountById(@PathVariable Long id, @PathVariable Long accountId) {
+        return accountService.getAccountById(accountId);
+    }
+
+
+    @PostMapping("/{id}/accounts")
+    public void addAccountToCustomer(@PathVariable Long id, @RequestBody AccountDto accountDto) {
+        customerService.addAccountToCustomer(id, accountDto);
+    }
+
+    @DeleteMapping("/{id}/accounts/{accountId}")
+    public void deleteAccountFromCustomer(@PathVariable Long id, @PathVariable Long accountId) {
+        customerService.deleteAccountFromCustomer(id, accountId);
+    }
+
 
 }

@@ -13,5 +13,10 @@ public interface AccountService {
     public List<AccountDto> getAllAccounts();
     public AccountDto updateAccount(Long accountId,AccountDto accountDto);
     public void deleteAccount(Long id);
+//    TODO: implement these methods
+    public void deposit(Long accountId, Double amount);
+    public void withdraw(Long accountId, Double amount);
+    public void transfer(Long fromAccountId, Long toAccountId, Double amount);
+
 }
 

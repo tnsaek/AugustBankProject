@@ -20,6 +20,6 @@ public class CustomerDto {
     private List<Account>  accounts;
 
 
-    private List<Transaction> transactions;
+
     
 }

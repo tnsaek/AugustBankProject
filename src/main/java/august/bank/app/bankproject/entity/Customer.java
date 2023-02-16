@@ -31,8 +31,7 @@ public class Customer {
     private List<Account>  accounts;
 
 
-    @DocumentReference(lazy = true)
-    private List<Transaction> transactions;
+
 
 
 }

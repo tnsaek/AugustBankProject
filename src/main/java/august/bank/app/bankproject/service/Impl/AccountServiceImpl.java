@@ -67,6 +67,7 @@ public class AccountServiceImpl implements AccountService {
         throw new RuntimeException();
     }
 
+
     @Override
     public void deleteAccount(Long id) {
         try{
@@ -74,6 +75,23 @@ public class AccountServiceImpl implements AccountService {
         } catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
+
+    }
+
+//    TODO: Implement the following methods
+
+    @Override
+    public void deposit(Long accountId, Double amount) {
+
+    }
+
+    @Override
+    public void withdraw(Long accountId, Double amount) {
+
+    }
+
+    @Override
+    public void transfer(Long fromAccountId, Long toAccountId, Double amount) {
 
     }
 }
