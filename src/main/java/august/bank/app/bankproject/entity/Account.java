@@ -1,4 +1,4 @@
-package august.bank.app.bankproject.entity;
+package august.bank.app.bankproject.Entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
