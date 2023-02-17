@@ -1,6 +1,8 @@
 package august.bank.app.bankproject.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -29,13 +31,10 @@ public class Transaction {
 
 
     private String type;
+    private String fromId;
 
 
-    @DocumentReference(lazy = true)
-    private Customer from;
-
-    @DocumentReference(lazy = true)
-    private Customer to;
+    private String toId;
 
     private Double balance;
 

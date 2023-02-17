@@ -24,9 +24,9 @@ public class TransactionDto {
 
     private String type;
 
-    private Customer from;
+    private String from;
 
-    private Customer to;
+    private String to;
 
     private Double balance;
 }

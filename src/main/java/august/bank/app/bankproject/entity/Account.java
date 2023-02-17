@@ -1,5 +1,8 @@
 package august.bank.app.bankproject.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -25,6 +28,7 @@ public class Account {
     private Double balance;
 
     @DocumentReference(lazy = true)
+    @JsonIgnore
     private List<Transaction> transactions;
 
 }

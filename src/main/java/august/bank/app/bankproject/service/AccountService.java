@@ -12,9 +12,9 @@ public interface AccountService {
     public AccountDto updateAccount(String accountId,AccountDto accountDto);
     public void deleteAccount(String id);
 //    TODO: implement these methods
-    public void deposit(String accountId, Double amount);
-    public void withdraw(String accountId, Double amount);
-    public void transfer(String fromAccountId, Double amount);
+    public AccountDto deposit(String accountId, Double amount);
+    public AccountDto withdraw(String accountId, Double amount);
+    public AccountDto transfer(String fromAccountId,String toAccountId, Double amount);
 
 }
 

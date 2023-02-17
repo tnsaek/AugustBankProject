@@ -3,18 +3,26 @@ package august.bank.app.bankproject.service.Impl;
 
 import august.bank.app.bankproject.entity.Account;
 import august.bank.app.bankproject.dto.AccountDto;
+import august.bank.app.bankproject.entity.Transaction;
 import august.bank.app.bankproject.repository.AccountRepository;
+import august.bank.app.bankproject.repository.TransactionRepository;
 import august.bank.app.bankproject.service.AccountService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Transactional
 public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -73,11 +81,20 @@ public class AccountServiceImpl implements AccountService {
 //    TODO: Implement the following methods
 
     @Override
-    public void deposit(String accountId, Double amount) {
+    public AccountDto deposit(String accountId, Double amount) {
         try {
             Account account = accountRepository.findById(accountId).get();
             account.setBalance(account.getBalance() + amount);
-            accountRepository.save(account);
+            Transaction transaction = new Transaction();
+            transaction.setAmount(amount);
+            transaction.setBalance(account.getBalance());
+            transaction.setType("deposit");
+            transaction.setToId(account.getId());
+            transaction.setDateTime(LocalDateTime.now());
+            transaction = transactionRepository.save(transaction);
+            account.getTransactions().add(transaction);
+            return modelMapper.map(accountRepository.save(account), AccountDto.class);
+
         } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -85,11 +102,19 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void withdraw(String accountId, Double amount) {
+    public AccountDto withdraw(String accountId, Double amount) {
         try {
             Account account = accountRepository.findById(accountId).get();
             account.setBalance(account.getBalance() - amount);
-            accountRepository.save(account);
+            Transaction transaction = new Transaction();
+            transaction.setAmount(amount);
+            transaction.setType("withdraw");
+            transaction.setBalance(account.getBalance());
+            transaction.setFromId(account.getId());
+            transaction.setDateTime(LocalDateTime.now());
+            transaction = transactionRepository.save(transaction);
+            account.getTransactions().add(transaction);
+            return modelMapper.map(accountRepository.save(account), AccountDto.class);
         } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -97,11 +122,25 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void transfer(String fromAccountId, Double amount) {
+    public AccountDto transfer(String fromAccountId, String toAccountId, Double amount) {
         try {
-            Account account = accountRepository.findById(fromAccountId).get();
-            account.setBalance(account.getBalance() - amount);
-            accountRepository.save(account);
+            Account fromAccount = accountRepository.findById(fromAccountId).get();
+            Account toAccount = accountRepository.findById(toAccountId).get();
+            fromAccount.setBalance(fromAccount.getBalance() - amount);
+            toAccount.setBalance(toAccount.getBalance() + amount);
+            Transaction transaction = new Transaction();
+            transaction.setAmount(amount);
+            transaction.setType("transfer");
+            transaction.setBalance(fromAccount.getBalance());
+            transaction.setFromId(fromAccount.getId());
+            transaction.setToId(toAccount.getId());
+            transaction.setDateTime(LocalDateTime.now());
+            transaction = transactionRepository.save(transaction);
+            fromAccount.getTransactions().add(transaction);
+            toAccount.getTransactions().add(transaction);
+            accountRepository.save(toAccount);
+            fromAccount = accountRepository.save(fromAccount);
+            return modelMapper.map(fromAccount, AccountDto.class);
         } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }

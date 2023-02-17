@@ -78,6 +78,21 @@ public class CustomerController {
     public void deleteAccountFromCustomer(@PathVariable String id, @PathVariable String accountId) {
         customerService.deleteAccountFromCustomer(id, accountId);
     }
+    @PutMapping(value = "/{id}/accounts/{accountId}/deposit")
+
+    public AccountDto deposit(@PathVariable String accountId, @RequestParam double amount) {
+        return accountService.deposit(accountId, amount);
+    }
+
+    @PutMapping(value = "/{id}/accounts/{accountId}/withdraw")
+    public AccountDto withdraw(@PathVariable String accountId, @RequestParam double amount) {
+       return accountService.withdraw(accountId, amount);
+    }
+
+    @PutMapping(value = "/{id}/accounts/{fromAccountId}/transfer/{toAccountId}")
+    public AccountDto transfer(@PathVariable String fromAccountId, @PathVariable String toAccountId, @RequestParam Double amount) {
+        return accountService.transfer(fromAccountId, toAccountId, amount);
+    }
 
 
 }
