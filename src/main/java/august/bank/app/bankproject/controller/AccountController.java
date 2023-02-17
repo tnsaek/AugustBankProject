@@ -32,10 +32,24 @@ public class AccountController {
     public void deleteAccount(@PathVariable String accountId){
         accountService.deleteAccount(accountId);
     }
-//    TODO: implement these methods
-//    deposit
-//    withdraw
-//    transfer
+
+
+
+    @PutMapping(value = "/{accountId}/deposit")
+
+   public void deposit (@PathVariable String accountId, @RequestBody double amount){
+        accountService.deposit(accountId, amount);
+    }
+    @PutMapping(value = "/{accountId}/withdraw")
+    public void withdraw (@PathVariable String accountId, @RequestBody double amount){
+        accountService.withdraw(accountId, amount);
+    }
+    @PutMapping(value = "/{accountId}/transfer")
+    public void transfer (@PathVariable String accountId, @RequestBody double amount){
+        accountService.transfer(accountId, amount);
+    }
+
+
 
 
 }

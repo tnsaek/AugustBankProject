@@ -14,7 +14,7 @@ public interface AccountService {
 //    TODO: implement these methods
     public void deposit(String accountId, Double amount);
     public void withdraw(String accountId, Double amount);
-    public void transfer(String fromAccountId, String toAccountId, Double amount);
+    public void transfer(String fromAccountId, Double amount);
 
 }
 
