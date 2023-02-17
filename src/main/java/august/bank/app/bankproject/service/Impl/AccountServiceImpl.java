@@ -74,16 +74,36 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void deposit(String accountId, Double amount) {
+        try {
+            Account account = accountRepository.findById(accountId).get();
+            account.setBalance(account.getBalance() + amount);
+            accountRepository.save(account);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
     }
 
     @Override
     public void withdraw(String accountId, Double amount) {
+        try {
+            Account account = accountRepository.findById(accountId).get();
+            account.setBalance(account.getBalance() - amount);
+            accountRepository.save(account);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
     }
 
     @Override
-    public void transfer(String fromAccountId, String toAccountId, Double amount) {
-
+    public void transfer(String fromAccountId, Double amount) {
+        try {
+            Account account = accountRepository.findById(fromAccountId).get();
+            account.setBalance(account.getBalance() - amount);
+            accountRepository.save(account);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 }
