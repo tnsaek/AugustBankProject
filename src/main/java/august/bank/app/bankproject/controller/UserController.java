@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("")
     public List<UserDto> readAll() {
         return userService.readAll();
     }
@@ -28,7 +28,7 @@ public class UserController {
         return userService.readById(id);
     }
 
-    @PostMapping
+    @PostMapping("")
     public UserDto createUser(@RequestBody UserDto userDto) {
         return userService.create(userDto);
     }

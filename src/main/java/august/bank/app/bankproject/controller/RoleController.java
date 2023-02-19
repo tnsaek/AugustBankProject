@@ -21,7 +21,7 @@ public class RoleController {
     private RoleService roleService;
 
 
-    @GetMapping
+    @GetMapping("")
     public List<RoleDto> getRole() {
         return roleService.getRoles();
     }
