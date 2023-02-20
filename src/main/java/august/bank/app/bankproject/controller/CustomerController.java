@@ -40,7 +40,7 @@ public class CustomerController {
         return customerService.getCustomerById(id);
     }
 
-    @PostMapping
+    @PostMapping("")
     public CustomerDto saveCustomer(@RequestBody CustomerDto customer) {
         return customerService.saveCustomer(customer);
     }

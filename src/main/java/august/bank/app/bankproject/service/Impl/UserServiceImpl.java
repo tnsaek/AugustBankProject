@@ -6,7 +6,6 @@ import august.bank.app.bankproject.repository.UserRepository;
 import august.bank.app.bankproject.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+
     @Autowired
     private ModelMapper modelMapper;
 
@@ -76,21 +77,21 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public UserDto login(String email, String password) {
-        try{
-            User user = userRepository.findUserByEmail(email).get();
-            String encodedPassword = passwordEncoder.encode(password);
-
-            if (user.getPassword().equals(encodedPassword)){
-                return modelMapper.map(user,UserDto.class);
-            } else {
-                throw new UsernameNotFoundException("email or password incorrect");
-            }
-
-        } catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
-    }
+//    @Override
+//    public UserDto login(String email, String password) {
+//        try{
+//            User user = userRepository.findUserByEmail(email).get();
+//            String encodedPassword = passwordEncoder.encode(password);
+//
+//            if (user.getPassword().equals(encodedPassword)){
+//                return modelMapper.map(user,UserDto.class);
+//            } else {
+//                throw new UsernameNotFoundException("email or password incorrect");
+//            }
+//
+//        } catch (RuntimeException e){
+//            throw new RuntimeException(e.getMessage());
+//        }
+//    }
 
 }

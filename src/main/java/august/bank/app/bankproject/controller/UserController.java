@@ -19,8 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-//    @RolesAllowed("ADMIN")
     public List<UserDto> readAll() {
         return userService.readAll();
     }
@@ -30,7 +28,7 @@ public class UserController {
         return userService.readById(id);
     }
 
-    @PostMapping
+    @PostMapping("")
     public UserDto createUser(@RequestBody UserDto userDto) {
         return userService.create(userDto);
     }
@@ -48,15 +46,15 @@ public class UserController {
     }
 
 
-    @PostMapping("/login")
-    public UserDto login(@RequestParam String email,@RequestParam String password){
-        return userService.login(email,password);
-    }
-
-    @PostMapping("/post")
-    public UserDto signup(@RequestBody UserDto userDto){
-        return userService.create(userDto);
-    }
+//    @PostMapping("/login")
+//    public UserDto login(@RequestParam String email,@RequestParam String password){
+//        return userService.login(email,password);
+//    }
+//
+//    @PostMapping("/post")
+//    public UserDto signup(@RequestBody UserDto userDto){
+//        return userService.create(userDto);
+//    }
 
 
 }
