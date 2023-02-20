@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import lombok.Data;
-
 import java.util.List;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -14,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User{
 
     @Id
     private String id;
@@ -24,7 +22,18 @@ public class User {
     private String email;
 
     private String password;
-    
+
     @DocumentReference(lookup = "Role")
     private List<Role> roles;
+
+
+
+    public User(String id,String name,String email,String password){
+        this.id = id;
+        this.name = name;
+
+        this.email = email;
+        this.password = password;
+    }
+
 }

@@ -126,6 +126,10 @@ public class AccountServiceImpl implements AccountService {
         try {
             Account fromAccount = accountRepository.findById(fromAccountId).get();
             Account toAccount = accountRepository.findById(toAccountId).get();
+            if(fromAccount.getBalance() < amount){
+                System.out.println("Balance have not sufficient amount");
+                return modelMapper.map(fromAccount,AccountDto.class);
+            } else {
             fromAccount.setBalance(fromAccount.getBalance() - amount);
             toAccount.setBalance(toAccount.getBalance() + amount);
             Transaction transaction = new Transaction();
@@ -141,6 +145,7 @@ public class AccountServiceImpl implements AccountService {
             accountRepository.save(toAccount);
             fromAccount = accountRepository.save(fromAccount);
             return modelMapper.map(fromAccount, AccountDto.class);
+            }
         } catch (RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
