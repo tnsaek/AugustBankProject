@@ -17,10 +17,12 @@ public class CustomerDto {
 
     private String lastName;
 
+    private String email;
 
-    private List<Account>  accounts;
+    private String username;
 
 
+    private List<Account> accounts;
 
-    
+
 }

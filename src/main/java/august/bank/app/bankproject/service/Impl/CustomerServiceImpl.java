@@ -51,13 +51,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto saveCustomer(CustomerDto customer) {
         try {
-            Customer customerEntity = modelMapper.map(customer, Customer.class);
-            Customer savedCustomer = customerRepository.save(customerEntity);
-            return modelMapper.map(savedCustomer, CustomerDto.class);
+            if (customerRepository.existsByUsername(customer.getUsername()) || customerRepository.existsByEmail(customer.getEmail())) {
+                throw new RuntimeException("Username or Email already exists");
+            } else {
+                Customer customerEntity = modelMapper.map(customer, Customer.class);
+                Customer savedCustomer = customerRepository.save(customerEntity);
+                return modelMapper.map(savedCustomer, CustomerDto.class);
+            }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            ;
-            throw new RuntimeException("Customer not saved");
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -121,6 +123,16 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException(e.getMessage());
         }
 
+    }
+
+    @Override
+    public CustomerDto getCustomerByUsername(String username) {
+        try {
+            Customer customer = customerRepository.findByUsername(username);
+            return modelMapper.map(customer, CustomerDto.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Customer not found");
+        }
     }
 
 

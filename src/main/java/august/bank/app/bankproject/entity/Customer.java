@@ -8,6 +8,7 @@ import java.util.List;
 
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -24,13 +25,14 @@ public class Customer {
     private String firstName;
 
     private String lastName;
+    @Indexed(unique = true)
+    private String email;
+    @Indexed(unique = true)
+    private String username;
 
 
     @DocumentReference
-    private List<Account>  accounts;
-
-
-
+    private List<Account> accounts;
 
 
 }

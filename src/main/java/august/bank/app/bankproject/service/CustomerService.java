@@ -21,6 +21,5 @@ public interface CustomerService {
     void deleteAccountFromCustomer(String customerId, String accountId);
 
 
-
-
+    CustomerDto getCustomerByUsername(String username);
 }

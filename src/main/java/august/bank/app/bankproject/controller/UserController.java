@@ -2,10 +2,18 @@ package august.bank.app.bankproject.controller;
 
 import august.bank.app.bankproject.dto.UserDto;
 import august.bank.app.bankproject.service.UserService;
+import august.bank.app.bankproject.service.security.JwtGenerator;
+import august.bank.app.bankproject.service.security.ResponseDto;
 import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,11 +27,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-//    @RolesAllowed("ADMIN")
-    public List<UserDto> readAll() {
-        return userService.readAll();
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+
+    @Autowired
+    private JwtGenerator jwtGenerator;
+
+
+    @GetMapping("/username/{username}")
+    public ResponseEntity<UserDto> readByUsername(@PathVariable String username) {
+        try {
+            return new ResponseEntity<>(userService.findByUsername(username), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+
 
     @GetMapping("/{id}")
     public UserDto readById(@PathVariable String id) {
@@ -31,8 +51,13 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto createUser(@RequestBody UserDto userDto) {
-        return userService.create(userDto);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+
+        try {
+            return new ResponseEntity<>(userService.create(userDto), HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/{id}")
@@ -49,13 +74,21 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public UserDto login(@RequestParam String email,@RequestParam String password){
-        return userService.login(email,password);
-    }
+    public ResponseEntity<ResponseDto> login(@RequestBody UserDto userDto) {
 
-    @PostMapping("/post")
-    public UserDto signup(@RequestBody UserDto userDto){
-        return userService.create(userDto);
+        try {
+
+
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDto.getUsername(), userDto.getPassword()));
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            String token = jwtGenerator.generateToken(authentication);
+            return new ResponseEntity<>(new ResponseDto(token), HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(new ResponseDto("Error Parsing JWT"), HttpStatus.resolve(401));
+
+        }
     }
 
 

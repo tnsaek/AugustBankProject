@@ -8,7 +8,9 @@ import august.bank.app.bankproject.service.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +34,18 @@ public class CustomerController {
     public List<CustomerDto> getAllCustomers() {
 
         return customerService.getAllCustomers();
+
+    }
+
+    @GetMapping("/username/{username}")
+
+    public ResponseEntity<CustomerDto> getCustomerByUsername(@PathVariable String username) {
+        try {
+            return new ResponseEntity<>(customerService.getCustomerByUsername(username), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
 
     }
 
@@ -78,6 +92,7 @@ public class CustomerController {
     public void deleteAccountFromCustomer(@PathVariable String id, @PathVariable String accountId) {
         customerService.deleteAccountFromCustomer(id, accountId);
     }
+
     @PutMapping(value = "/{id}/accounts/{accountId}/deposit")
 
     public AccountDto deposit(@PathVariable String accountId, @RequestParam double amount) {
@@ -86,7 +101,7 @@ public class CustomerController {
 
     @PutMapping(value = "/{id}/accounts/{accountId}/withdraw")
     public AccountDto withdraw(@PathVariable String accountId, @RequestParam double amount) {
-       return accountService.withdraw(accountId, amount);
+        return accountService.withdraw(accountId, amount);
     }
 
     @PutMapping(value = "/{id}/accounts/{fromAccountId}/transfer/{toAccountId}")
